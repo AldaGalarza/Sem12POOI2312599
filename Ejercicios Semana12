@@ -1,0 +1,374 @@
+1)
+
+import java.util.Scanner;
+class Hora {
+    private int horas;
+    private int minutos;
+    private int segundos;
+
+    public Hora() {
+        this.horas = 0;
+        this.minutos = 0;
+        this.segundos = 0;
+    }
+
+    public Hora(int horas, int minutos, int segundos) {
+        this.horas = horas;
+        this.minutos = minutos;
+        this.segundos = segundos;
+    }
+
+    public void visualizarHora() {
+        System.out.printf("%02d:%02d:%02d\n", this.horas, this.minutos, this.segundos);
+    }
+
+    public Hora sumarHoras(Hora h1, Hora h2) {
+        int totalSegundos = this.segundos + h1.segundos + h2.segundos;
+        int segundosRes = totalSegundos % 60;
+        int totalMinutos = this.minutos + h1.minutos + h2.minutos + (totalSegundos / 60);
+        int minutosRes = totalMinutos % 60;
+        int horasRes = this.horas + h1.horas + h2.horas + (totalMinutos / 60);
+
+        return new Hora(horasRes, minutosRes, segundosRes);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Hora h1 = new Hora(1, 30, 45);
+        Hora h2 = new Hora(2, 15, 30);
+        Hora h3 = new Hora();
+
+        h3 = h3.sumarHoras(h1, h2);
+
+        System.out.println("Valor de h1: ");
+        h1.visualizarHora();
+
+        System.out.println("Valor de h2: ");
+        h2.visualizarHora();
+
+        System.out.println("Resultado de la suma: ");
+        h3.visualizarHora();
+    }
+}
+
+
+2) y 3)
+
+
+class Empleado {
+    private String nombre;
+    private int numeroEmpleado;
+
+    public Empleado(String nombre, int numeroEmpleado) {
+        this.nombre = nombre;
+        this.numeroEmpleado = numeroEmpleado;
+    }
+
+    public void verDatos() {
+        System.out.println("Nombre del empleado: " + this.nombre);
+        System.out.println("Número de empleado: " + this.numeroEmpleado);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Empleado[] empleados = new Empleado[50];
+
+        String[] nombres = {"Juan", "Maria", "Pedro", "Ana", "Luis", "Carla", "Jorge", "Laura", "Pablo", "Rosa",
+                            "Gabriel", "Sofia", "Fernando", "Elena", "Diego", "Valeria", "Raul", "Marta", "Andres", "Clara",
+                            "Roberto", "Carmen", "Ricardo", "Eva", "Alejandro", "Julia", "Ramon", "Cecilia", "Manuel", "Isabel",
+                            "Daniel", "Monica", "Hector", "Patricia", "Oscar", "Silvia", "Victor", "Teresa", "Emilio", "Diana",
+                            "Mario", "Olga", "Alberto", "Raquel", "Ernesto", "Natalia", "Felix", "Lorena", "Gonzalo", "Beatriz"};
+
+        for (int i = 0; i < empleados.length; i++) {
+            empleados[i] = new Empleado(nombres[i], 1 + i);
+        }
+
+        System.out.println("Datos de los empleados: ");
+        for (int i = 0; i < empleados.length; i++) {
+            System.out.println("Empleado " + (i + 1) + ": ");
+            empleados[i].verDatos();
+            System.out.println();
+        }
+    }
+}
+
+
+
+4) 
+
+public class Hora {
+    private int horas;
+    private int minutos;
+    private int segundos;
+
+    public Hora(int horas, int minutos, int segundos) {
+        this.horas = horas;
+        this.minutos = minutos;
+        this.segundos = segundos;
+    }
+
+    public int getHoras() {
+        return horas;
+    }
+
+    public int getMinutos() {
+        return minutos;
+    }
+
+    public int getSegundos() {
+        return segundos;
+    }
+
+    public void avanzar() {
+        segundos++;
+        if (segundos >= 60) {
+            segundos = 0;
+            minutos++;
+            if (minutos >= 60) {
+                minutos = 0;
+                horas++;
+                if (horas >= 24) {
+                    horas = 0;
+                }
+            }
+        }
+    }
+
+    public void ponerACero() {
+        this.horas = 0;
+        this.minutos = 0;
+        this.segundos = 0;
+    }
+
+    public void visualizar() {
+        System.out.println("Hora actual: " + horas + ":" + minutos + ":" + segundos);
+    }
+
+    public static void main(String[] args) {
+    }
+}
+
+
+
+5) 
+
+public class Cadena {
+    private int longitud;
+    private String cadena;
+
+    public Cadena(String cadena) {
+        this.cadena = cadena;
+        this.longitud = cadena.length();
+    }
+
+    public int getLongitud() {
+        return longitud;
+    }
+
+    public String getCadena() {
+        return cadena;
+    }
+
+    public char caracter(int i) {
+        if (i >= 0 && i < longitud) {
+            return cadena.charAt(i);
+        } else {
+            return '\0'; 
+        }
+    }
+
+    public void visualizar() {
+        System.out.println("Cadena: " + cadena);
+        System.out.println("Longitud: " + longitud);
+    }
+
+    public static void main(String[] args) {
+        
+    }
+}
+
+
+6)
+
+import java.util.ArrayList;
+import java.util.List;
+
+class LAN {
+    List<Node> nodes;
+
+    public LAN() {
+        nodes = new ArrayList<>();
+    }
+
+    public void addNode(Node node) {
+        nodes.add(node);
+    }
+
+    public void removeNode(Node node) {
+        nodes.remove(node);
+    }
+
+    public List<Node> listNodes() {
+        return nodes;
+    }
+
+    public void configureNetwork(String topology) {
+
+    }
+
+    public void setPackageSize(int size) {
+        
+    }
+
+    public void sendPackage(Node fromNode, Node toNode, Package data) {
+        
+    }
+
+    public void broadcastPackage(Node fromNode, Package data) {
+        
+    }
+
+    public void calculateStats() {
+        
+    }
+}
+
+class Node {
+    String name;
+    String type;
+}
+
+class Computer extends Node {
+    
+}
+
+class Workstation extends Node {
+    
+}
+
+class FaxMachine extends Node {
+    
+}
+
+class Package {
+    int size;
+    
+}
+
+
+class StarLAN extends LAN {
+    
+}
+
+class BusLAN extends LAN {
+    
+}
+
+class RingLAN extends LAN {
+    
+}
+
+class HubLAN extends LAN {
+    
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LAN myLAN = new LAN();
+        
+    }
+}
+
+
+7)
+
+class Empleado {
+    String nombre;
+    String id;
+    double salarioBase;
+
+    public Empleado(String nombre, String id, double salarioBase) {
+        this.nombre = nombre;
+        this.id = id;
+        this.salarioBase = salarioBase;
+    }
+
+    public double calcularSalario() {
+        return salarioBase;
+    }
+
+    public void darDeAlta() {
+    }
+
+    public void jubilacion() {
+   
+    }
+}
+class Supervisor extends Empleado {
+    double bono;
+
+    public Supervisor(String nombre, String id, double salarioBase, double bono) {
+        super(nombre, id, salarioBase);
+        this.bono = bono;
+    }
+
+    @Override
+    public double calcularSalario() {
+       
+        return salarioBase + bono;
+    }
+
+    public void promocionar(Empleado empleado) {
+ 
+    }
+}
+
+class DepartamentoRRHH extends Empleado {
+    public DepartamentoRRHH(String nombre, String id, double salarioBase) {
+        super(nombre, id, salarioBase);
+    }
+
+    public void calcularAumentoSalario(Empleado empleado, double porcentaje) {
+  
+    }
+
+    public void despedir(Empleado empleado) {
+
+    }
+}
+
+class SUNAT {
+    public void accederInformacion(Empleado empleado) {
+
+    }
+}
+
+class Publico {
+    public void accederInformacion(Empleado empleado) {
+
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Empleado empleado1 = new Empleado("Juan", "001", 1000.0);
+        Supervisor supervisor1 = new Supervisor("Pedro", "002", 1500.0, 200.0);
+        DepartamentoRRHH rrhh1 = new DepartamentoRRHH("Maria", "003", 2000.0);
+        SUNAT sunat = new SUNAT();
+        Publico publico = new Publico();
+
+        double salarioEmpleado1 = empleado1.calcularSalario();
+        double salarioSupervisor1 = supervisor1.calcularSalario();
+        rrhh1.calcularAumentoSalario(empleado1, 0.1);
+        rrhh1.despedir(empleado1);
+        supervisor1.promocionar(empleado1);
+        sunat.accederInformacion(empleado1);
+        publico.accederInformacion(empleado1);
+    }
+}
+
+
